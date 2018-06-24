@@ -1,78 +1,96 @@
 <!DOCTYPE HTML>
+
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta http-equiv="edit-Type" edit="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>JSFiddle</title>
+<head>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
 
-      <meta name="robots" content="index, follow">
-      <meta name="googlebot" content="index, follow">
+table td,
+table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
 
-      <script src="//jsfiddle.net/js/embed/highlight.pack.js"></script>
-      <script src="//jsfiddle.net/js/embed/embed.js"></script>
-      <link rel="stylesheet" media="screen" href="//jsfiddle.net/css/embed/embed-light.css" />
+table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
 
-      <script type="text/javascript">
-        var height;
-        var force_height = null;
-        var slug = "d6dbv0f7";
-        var show_src = "//fiddle.jshell.net/d6dbv0f7/show/light/";
-        var resize_element_counter = 0;
-        var shell_edit_url = "/d6dbv0f7/light/";
+table tr:hover {
+  background-color: #ddd;
+}
 
-      </script>
+table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
 
-    <link rel="stylesheet" media="screen" href="//fonts.googleapis.com/css?family=Inconsolata" />
+var reloadData = 30; // dalam detik
 
-    <style type="text/css" media="screen">
-    </style>
+var timer;
 
-  </head>
-  <body>
-    <div id="wrapper">
-        <header>
-          <h1><a href="//daeplatform.net" target="_blank">Dae Platform</a></h1>
-          <div id="actions">
-            <ul class="normalRes">
-                <li class=&quot;active&quot;>
-                  <a data-trigger-type="refresh" href="#Refresh">Refresh</a>
-                </li>
-            </ul>
-            <div class="hl"></div>
-          </div>
-        </header>
+function updateDataAPI() {
 
-        <div id="tabs">
-              <div class="tCont refresh active" id="refresh"></div>
-                <script type="text/javascript">
-                  window.addEventListener('load', function(){
-                    if (typeof(EmbedManager) === undefined){
-                        EmbedManager.loadResult();
-                    }
-                  }, false);
-                </script>
-        </div>
-    </div>
-      <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  $.ajax({
+    url: 'https://indodax.com/api/summaries',
+    success: function(data) {
+      var row;
 
-    var GA_LOCAL_STORAGE_KEY = 'ga:clientId';
-    if (window.localStorage) {
-      ga('create', 'UA-366077-19', {
-        'storage': 'none',
-        'clientId': localStorage.getItem(GA_LOCAL_STORAGE_KEY)
-      });
-      ga(function(tracker) {
-        localStorage.setItem(GA_LOCAL_STORAGE_KEY, tracker.get('clientId'));
-      });
-      ga('send', 'pageview', '/[fiddle]/[embedded]/[tabs]/'); // where `url_structure` is for example `/[user]/[fiddle]/[revision]/embedded/js,css/`
+      $('#coins').html('<tr><th>Pairs</th><th>Harga</th> <th>Beli</th> <th>jual</th> <th>Tertinggi 24h</th><th>Terendah 24h</th></tr>')
+      for (var key in data.tickers) {
+        row = `<tr>
+              <td>` + key.toUpperCase() + `</td>
+              <td>` + formatNumber(data.tickers[key].last) + `</td>
+              <td>` + formatNumber(data.tickers[key].buy) + `</td>
+              <td>` + formatNumber(data.tickers[key].sell) + `</td>
+              <td>` + formatNumber(data.tickers[key].high) + `</td>
+              <td>` + formatNumber(data.tickers[key].low) + `</td>
+            </tr>`
+        $('#coins tr:last').after(row);
+      }
+
+      clearTimeout(timer)
+      $('#timer').html(reloadData)
+      setTimeout(updateDataAPI, reloadData * 1000)
+      updateTimer()
+    },
+    error: function(err) {
+      alert("Tidak bisa mengambil data API")
     }
-  </script>
+  })
+}
 
-  </body>
+function formatNumber(n) {
+  if (n.indexOf('.') > -1)
+    return parseFloat(n).toFixed(8);
+  else
+    return parseInt(n).toLocaleString("id-ID")
+}
+
+function updateTimer() {
+  a = parseInt($('#timer').html())
+  $('#timer').html(a - 1)
+  if (a > 0)
+    timer = setTimeout(updateTimer, 1000)
+}
+updateDataAPI()
+
+</head>
+<body>
+<p><b>Update data dalam: <span id="timer">0</span> Detik</b></p>
+<table id="coins">
+	<tr>
+		<th>Pairs</th>
+		<th>Harga</th>
+		<th>Beli</th>
+		<th>jual</th>
+		<th>Tertinggi 24h</th>
+		<th>Terendah 24h</th>
+	</tr>
+</table>
+</body>
 </html>
