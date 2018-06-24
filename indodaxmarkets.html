@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style type="text/css">
-    table {
+table {
   border-collapse: collapse;
   width: 100%;
 }
@@ -35,16 +35,11 @@ table th {
   background-color: #4CAF50;
   color: white;
 }
-
 </style>
 
 <!-- TODO: Missing CoffeeScript 2 -->
 
 <script type="text/javascript">
-
-
-    window.onload=function(){
-      
 var reloadData = 30; // dalam detik
 
 var timer;
@@ -94,15 +89,12 @@ function updateTimer() {
     timer = setTimeout(updateTimer, 1000)
 }
 updateDataAPI()
-
-
-    }
-
 </script>
 
 </head>
 <body>
-  <p><b>Update data dalam: <span id="timer">0</span> Detik</b></p>
+
+<p><b>Update data dalam: <span id="timer">0</span> Detik</b></p>
 <table id="coins">
   <tr>
     <th>Pairs</th>
