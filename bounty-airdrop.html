@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Daethereum - Bounty & Airdrop</title>
+		<title>Daethereum (DTHR) - Bounty & Airdrop</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!-- Favicon -->
@@ -21,19 +21,30 @@
 
 		<!-- Header -->
 			<section id="header">
-				<div class="inner">
-					<img src="dthr/Daethereum.png" />
-					<h1><strong>Daethereum (DTHR) - Bounty & Airdrop</strong></h1>
+				<header class="major">
+					<center><h2>Daethereum (DTHR) - Bounty & Airdrop</h2></center>
+				</header>
+				<ul class="actions">
+					<center>
+					<li><a target="_blank" href="https://goo.gl/forms/7TTrlt6EQi4led2p1" class="button scrolly">Filling In Form</a></li>
+					</center>
+				</ul>
+				</div>
+			</section>
+
+		<!-- Page -->
+			<section id="two" class="main style2">
+				<div class="container">
+					<p><b>Telegram Campaign</b></p>
+					<p>1. Join Our Telegram Channel: <a target="_blank" href="https://t.me/daeplatform">t.me/daeplatform</a><br />
+					2. Join Our Telegram Group: <a target="_blank" href="https://t.me/DaePlatformGroup>t.me/DaePlatformGroup</a><br />
+					Reward: 10 DTHR</p>
 					<p><b>Social Media Campaign</b></p>
 					<p>1. Like Our FansPage: <a target="_blank" href="https://fb.com/daeplatform">fb.com/daeplatform</a><br />
 					2. Share: <a target="_blank" href="https://www.facebook.com/daeplatform/posts/1835697250073321">www.facebook.com/daeplatform/posts/1835697250073321<br />
 					3. Following Our Twitter: <a target="_blank" href="https://twitter.com/daeplatformnet">@daeplatformnet<br />
 					4. Retweet: <a target="_blank" href="https://twitter.com/daeplatformnet/status/1013760876371853312"><br />
 					Reward: 20 DTHR</p>
-					<p><b>Telegram Campaign</b></p>
-					<p>1. Join Our Telegram Channel: <a target="_blank" href="https://t.me/daeplatform">t.me/daeplatform</a><br />
-					2. Join Our Telegram Group: <a target="_blank" href="https://t.me/DaePlatformGroup>t.me/DaePlatformGroup</a><br />
-					Reward: 10 DTHR</p>
 					<p><b>BitcoinTalk Campaign</b></p>
 					<p>1. Create a thread about Daethereum (DTHR) in your language.<br />
 					Reward: 100 DTHR<br />
@@ -45,16 +56,68 @@
 					Reward: 20 DTHR</p>
 					<p><b>YouTube Campaign</b></p>
 					<p>1. Create a video about Daethereum (DTHR).<br />
-					3. Upload your video to YouTube.<br />
+					2. Upload your video to YouTube.<br />
 					Reward: 500 DTHR</p>
 					<p><b>Refer Bounty & Airdrop, and get 10% from which they claim.</b></p>
-					<ul class="actions">
-						<center>
-						<li><a target="_blank" href="https://goo.gl/forms/7TTrlt6EQi4led2p1" class="button scrolly">Filling In Form</a></li>
-						</center>
-					</ul>
 				</div>
 			</section>
+
+		<!-- Page -->
+		<section id="one" class="main style1">
+			<div class="container">
+				<header class="major">
+					<center><h2>Explorer</h2></center>
+				</header>
+<style>
+    #token-txs-11 {
+        line-height: 1.8;
+        border-radius: 8px;
+        max-width: 700px !important;
+        background-blend-mode: darken;
+        background-color: rgba(21,12,70,0.9);
+    }
+    #token-txs-11 .txs.big-screen-table td .tx-amount{
+        display: inline-block;
+        width: 150px;
+        white-space: nowrap;
+    }
+    #token-txs-11 .txs.big-screen-table td .tx-link{
+        max-width: 120px;
+    }
+    #token-txs-11 .txs.big-screen-table td .tx-link:last-child{
+        max-width: 150px;
+    }
+    #token-txs-11 .txs.big-screen-table td .tx-amount a:nth-child(1){
+        max-width: 110px !important;
+    }
+    #token-txs-11 .txs.big-screen-table td .tx-amount  a:nth-child(2){
+        max-width: 50px !important;
+    }
+</style>
+<div id="token-txs-11"></div>
+<script type="text/javascript">
+    if (typeof (eWgs) === 'undefined') {
+        document.write('<scr' + 'ipt src="https://api.ethplorer.io/widget.js?' + new Date().getTime().toString().substr(0, 7) + '" async></scr' + 'ipt>');
+        var eWgs = [];
+    }
+    eWgs.push(function () {
+        ethplorerWidget.init(
+            '#token-txs-11', // Placeholder element
+            'tokenHistory', // Widget type
+            {
+                address: '0x2c8d7634d0daf8db5c55b3ab0821df4a75b0913f', // keep empty to show all tokens
+                limit: 5, // Number of records to show
+            },
+            {
+                header: '<div class="txs-header">Daereum (DAER)</div>', // customized header
+                loader: '<div class="txs-loading">* L * O * A * D * I * N * G *<br><small>Please wait...</small></div>', // customized loader
+                bigScreenTable: '<tr><td>%from% <span class="tx-send">sent</span> <span class="tx-amount">%amount% %token%</span> <span class="tx-send">to</span> %to% <span class="tx-send">at</span><span class="tx-date"> %datetime%</span></td></tr>'
+            }
+        );
+    });
+</script>
+			</div>
+		</section>
 
 		<!-- Five -->
 		<!--
@@ -365,6 +428,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 				</div>
 			</section>
 		-->
+
 		<!-- Footer -->
 			<section id="footer">
 				<ul class="icons">
@@ -378,6 +442,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 					<li>&copy; 2017-2018 Dae Platform, All Rights Reserved.</li>
 				</ul>
 			</section>
+
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrolly.min.js"></script>
@@ -385,5 +450,6 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
+
 	</body>
 </html>
