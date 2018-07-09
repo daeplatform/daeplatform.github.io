@@ -84,36 +84,6 @@
 				</div>
 			</section>
 
-		<!-- Page -->
-		<section id="one" class="main style1">
-			<div class="container">
-<div id="token-txs-11"></div>
-<script type="text/javascript">
-    if (typeof (eWgs) === 'undefined') {
-        document.write('<scr' + 'ipt src="https://api.ethplorer.io/widget.js?' + new Date().getTime().toString().substr(0, 7) + '" async></scr' + 'ipt>');
-        var eWgs = [];
-    }
-    eWgs.push(function () {
-        ethplorerWidget.init(
-            '#token-txs-11', // Placeholder element
-            'tokenHistory', // Widget type
-            {
-                address: '0x9fe7b0d744fa22333e443cfbbe9469d2ddc1ee5c', // keep empty to show all tokens
-                limit: 5, // Number of records to show
-            },
-            {
-                header: '<div class="txs-header">Daethereum (DTHR)</div>', // customized header
-                loader: '<div class="txs-loading">* L * O * A * D * I * N * G *<br><small>Please wait...</small></div>', // customized loader
-                bigScreenTable: '<tr><td>%from% <span class="tx-send">sent</span> <span class="tx-amount">%amount% %token%</span> <span class="tx-send">to</span> %to% <span class="tx-send">at</span><span class="tx-date"> %datetime%</span></td></tr>'
-
-            }
-
-        );
-    });
-</script>
-			</div>
-		</section>
-
 		<!-- Five -->
 		<!--
 			<section id="five" class="main style1">
